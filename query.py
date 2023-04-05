@@ -2,8 +2,10 @@
 import subprocess
 import time
 import sys
+import pandas as pd
 import json
 import csv
+
 
 
 # CALCULO EL INTERVALO
@@ -14,13 +16,15 @@ from datetime import datetime, timedelta
 now = datetime.utcnow()
 
 # Subtract one day to get yesterday's date
+
 yesterday = now - timedelta(days=1)
+today  = now
 
 # Set the start time to midnight (0:00:00)
-start_time = datetime(yesterday.year, yesterday.month, yesterday.day, 0, 0, 0, 0)
+start_time = datetime(yesterday.year, yesterday.month, yesterday.day, 3, 0, 0, 0)
 
 # Set the end time to just before midnight (23:59:59.999999)
-end_time = datetime(yesterday.year, yesterday.month, yesterday.day, 23, 59, 59, 999999)
+end_time = datetime(today.year, today.month, today.day, 3, 0, 0, 0)
 
 # Format the interval in ISO 8601 format
 interval = f"{start_time.isoformat()}Z/{end_time.isoformat()}Z"
